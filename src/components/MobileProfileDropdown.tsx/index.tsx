@@ -2,7 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { BellIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { classNames } from '@/util';
-import { NAVIGATION } from '@/constants/navigation';
+import { NAVIGATION, USER_NAVIGATION } from '@/constants/navigation';
 
 const user = {
   name: 'Tom Cook',
@@ -61,7 +61,7 @@ export default function MobileProfileDropdown() {
           </button>
         </div>
         <div className="mt-3 space-y-1 px-2">
-          {userNavigation.map((item) => (
+          {USER_NAVIGATION.map((item) => (
             <Disclosure.Button
               key={item.name}
               as="a"

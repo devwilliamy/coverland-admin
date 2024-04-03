@@ -1,3 +1,4 @@
+'use client';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -5,23 +6,17 @@ import { classNames } from '@/util';
 import { NAVIGATION } from '@/constants/navigation';
 import ProfileDropdown from '../Profile/ProfileDropdown';
 import MobileProfileDropdown from '../MobileProfileDropdown.tsx';
-
+import HomeLogo from '../Logos/HomeLogo';
 export default function Header() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-900">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <Image
-                    className="h-8 w-8"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                    width={80}
-                    height={80}
-                  />
+                  <HomeLogo />
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
