@@ -4,12 +4,7 @@ import Image from 'next/image';
 import { classNames } from '@/util';
 import { USER_NAVIGATION } from '@/constants/navigation';
 import CoverlandLogo from '@/images/icon/coverland_icon.png';
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl: CoverlandLogo,
-};
+import { TEST_USER } from '@/constants/testVariables';
 
 export default function ProfileDropdown() {
   return (
@@ -20,7 +15,7 @@ export default function ProfileDropdown() {
           <span className="sr-only">Open user menu</span>
           <Image
             className="h-8 w-8 rounded-full"
-            src={user.imageUrl}
+            src={TEST_USER.imageUrl}
             alt=""
             width={80}
             height={80}
