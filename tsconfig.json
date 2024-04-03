@@ -25,7 +25,7 @@
       "@/video/*": ["./public/video/*"],
       "@/data/*": ["./public/data/*"],
       "@/category-images-new/*": ["./public/category-images-new/*"],
-      "@/videos/*": ["./videos/*"]
+      "@/videos/*": ["./videos/*"],
     }
   },
   "include": [
