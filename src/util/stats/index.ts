@@ -1,9 +1,3 @@
-export const averageMonthlySpend = (data: number[]): number => {
-  const sum = data.reduce((total, currentValue) => total + currentValue);
-  const average = sum / data.length;
-  return average;
-};
-
 export const calculateAverage = (data: number[]): number => {
   if (data.length === 0) {
     return NaN;
@@ -12,8 +6,6 @@ export const calculateAverage = (data: number[]): number => {
   const average = sum / data.length;
   return average;
 };
-
-export const averageSpendByMonth = (month: string): number => {};
 
 export const calculatePercentageChange = (
   previousValue: number,
