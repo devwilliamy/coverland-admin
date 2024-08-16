@@ -4,12 +4,17 @@ import PageTitle from '../PageTitle';
 import { sampleLineChart1 } from '@/data/sampleChart';
 import { sampleLineChart2 } from '@/data/sampleChart2';
 import { OrderSummary } from '@/lib/supabase/types/OrderSummary';
+import DailyHourlyLineChart from '../Charts/LineChart/DailyHourlyLineChart';
 
 type DashboardProps = {
   orderSummary: OrderSummary;
+  dailyHourlySummary: any;
 };
 
-export default function Dashboard({ orderSummary }: DashboardProps) {
+export default function Dashboard({
+  orderSummary,
+  dailyHourlySummary,
+}: DashboardProps) {
   return (
     <>
       <PageTitle title={'Test'} />
@@ -19,6 +24,9 @@ export default function Dashboard({ orderSummary }: DashboardProps) {
           <h1 className="text-slate-100">Chart</h1>
           <div className="flex h-96">
             <LineChart data={orderSummary} />
+          </div>
+          <div className="flex h-96">
+            <DailyHourlyLineChart data={dailyHourlySummary} />
           </div>
         </div>
       </main>
