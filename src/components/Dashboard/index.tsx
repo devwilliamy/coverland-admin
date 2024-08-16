@@ -15,6 +15,7 @@ type DashboardProps = {
 export default function Dashboard({
   orderSummary,
   dailyHourlySummary,
+  hourlyOrderSummary,
 }: DashboardProps) {
   return (
     <>
@@ -26,11 +27,11 @@ export default function Dashboard({
           <div className="flex h-96">
             <LineChart data={orderSummary} />
           </div>
-          {/* <div className="flex h-96">
-            <DailyHourlyLineChart data={dailyHourlySummary} />
-          </div> */}
           <div className="flex h-96">
-            <CarSeatCoverLineChart data={dailyHourlySummary} />
+            <DailyHourlyLineChart data={dailyHourlySummary} />
+          </div>
+          <div className="flex h-96">
+            <CarSeatCoverLineChart data={hourlyOrderSummary} />
           </div>
         </div>
       </main>

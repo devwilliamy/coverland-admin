@@ -14,8 +14,8 @@ export default async function DashboardPage() {
   const orderSummary = await getOrdersSummaryLast7Days();
   // const orderSummary = await getOrdersSummaryLast30Days();
   // const orderSummary = await getOrdersSummaryLastDay();
-  // const dailyHourlySummary = await getHourlyOrdersSummaryLastFewDays();
-  const dailyHourlySummary = await getHourlyOrdersSummary();
+  const dailyHourlySummary = await getHourlyOrdersSummaryLastFewDays();
+  const hourlyOrderSummary = await getHourlyOrdersSummary();
   // console.log('dailyHourlySummary:', dailyHourlySummary);
   return (
     <div className="min-h-full">
@@ -23,6 +23,7 @@ export default async function DashboardPage() {
       <Dashboard
         orderSummary={orderSummary}
         dailyHourlySummary={dailyHourlySummary}
+        hourlyOrderSummary={hourlyOrderSummary}
       />
     </div>
   );
