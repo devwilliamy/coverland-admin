@@ -71,4 +71,20 @@ export const getHourlyOrdersSummaryLastFewDays = async () => {
   }
 };
 
+export const getHourlyOrdersSummary = async () => {
+  try {
+    const { data, error } = await supabase.rpc('get_hourly_orders_summary');
+
+    if (error) {
+      throw new Error(
+        `Error fetching hourly orders summary from RPC: ${error.message}`
+      );
+    }
+
+    return data;
+  } catch (error) {
+    handleError(error, 'fetch hourly orders summary for the last few days');
+  }
+};
+
 // You can add more order-related queries here

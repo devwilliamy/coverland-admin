@@ -1,6 +1,7 @@
 import Dashboard from '@/components/Dashboard';
 import Header from '@/components/Header';
 import {
+  getHourlyOrdersSummary,
   getHourlyOrdersSummaryLastFewDays,
   getOrdersSummaryLast30Days,
   getOrdersSummaryLast7Days,
@@ -13,8 +14,9 @@ export default async function DashboardPage() {
   const orderSummary = await getOrdersSummaryLast7Days();
   // const orderSummary = await getOrdersSummaryLast30Days();
   // const orderSummary = await getOrdersSummaryLastDay();
-  const dailyHourlySummary = await getHourlyOrdersSummaryLastFewDays();
-  console.log('dailyHourlySummary:', dailyHourlySummary);
+  // const dailyHourlySummary = await getHourlyOrdersSummaryLastFewDays();
+  const dailyHourlySummary = await getHourlyOrdersSummary();
+  // console.log('dailyHourlySummary:', dailyHourlySummary);
   return (
     <div className="min-h-full">
       <Header />

@@ -5,6 +5,7 @@ import { sampleLineChart1 } from '@/data/sampleChart';
 import { sampleLineChart2 } from '@/data/sampleChart2';
 import { OrderSummary } from '@/lib/supabase/types/OrderSummary';
 import DailyHourlyLineChart from '../Charts/LineChart/DailyHourlyLineChart';
+import CarSeatCoverLineChart from '../Charts/LineChart/CarSeatCoverLineChart';
 
 type DashboardProps = {
   orderSummary: OrderSummary;
@@ -25,8 +26,11 @@ export default function Dashboard({
           <div className="flex h-96">
             <LineChart data={orderSummary} />
           </div>
-          <div className="flex h-96">
+          {/* <div className="flex h-96">
             <DailyHourlyLineChart data={dailyHourlySummary} />
+          </div> */}
+          <div className="flex h-96">
+            <CarSeatCoverLineChart data={dailyHourlySummary} />
           </div>
         </div>
       </main>
