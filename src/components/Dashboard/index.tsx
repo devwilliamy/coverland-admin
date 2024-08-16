@@ -3,7 +3,13 @@ import LineChart from '../Charts/LineChart';
 import PageTitle from '../PageTitle';
 import { sampleLineChart1 } from '@/data/sampleChart';
 import { sampleLineChart2 } from '@/data/sampleChart2';
-export default function Dashboard() {
+import { OrderSummary } from '@/lib/supabase/types/OrderSummary';
+
+type DashboardProps = {
+  orderSummary: OrderSummary;
+};
+
+export default function Dashboard({ orderSummary }: DashboardProps) {
   return (
     <>
       <PageTitle title={'Test'} />
@@ -12,7 +18,7 @@ export default function Dashboard() {
           {/* Your content */}
           <h1 className="text-slate-100">Chart</h1>
           <div className="flex h-96">
-            <LineChart data={sampleLineChart2} />
+            <LineChart data={orderSummary} />
           </div>
         </div>
       </main>

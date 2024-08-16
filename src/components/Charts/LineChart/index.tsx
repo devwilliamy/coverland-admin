@@ -94,49 +94,49 @@ import { lineChartTheme } from './theme';
 // export default LineChart;
 
 const LineChart = ({ data }) => {
-  const slicedData = data.slice(-14);
+  const slicedData = data;
 
   // Transform the data to the format required by Nivo
   const transformedData = [
     {
       id: 'Complete Orders',
       data: slicedData.map((d) => ({
-        x: d.created_at_pst,
+        x: d.created_at_pst?.slice(-5) || d.hour.slice(-8),
         y: d.complete_orders_count,
       })),
     },
     {
       id: 'Completed Orders',
       data: slicedData.map((d) => ({
-        x: d.created_at_pst,
+        x: d.created_at_pst?.slice(-5) || d.hour.slice(-8),
         y: d.completed_orders_count,
       })),
     },
     {
       id: 'Total Completed Orders',
       data: slicedData.map((d) => ({
-        x: d.created_at_pst,
+        x: d.created_at_pst?.slice(-5) || d.hour.slice(-8),
         y: d.total_completed_orders_count,
       })),
     },
     // {
     //   id: 'Pending Orders',
     //   data: slicedData.map((d) => ({
-    //     x: d.created_at_pst,
+    //     x: d.created_at_pst?.slice(-5)  || d.hour.slice(-8),
     //     y: d.pending_orders_count,
     //   })),
     // },
     // {
     //   id: 'PreOrders Pending',
     //   data: slicedData.map((d) => ({
-    //     x: d.created_at_pst,
+    //     x: d.created_at_pst?.slice(-5)  || d.hour.slice(-8),
     //     y: d.cl_pre_orders_pending_count,
     //   })),
     // },
     {
       id: 'PreOrders Not Pending',
       data: slicedData.map((d) => ({
-        x: d.created_at_pst,
+        x: d.created_at_pst?.slice(-5) || d.hour.slice(-8),
         y: d.cl_pre_orders_not_pending_count,
       })),
     },
@@ -145,7 +145,7 @@ const LineChart = ({ data }) => {
   return (
     <ResponsiveLine
       data={transformedData}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
       xScale={{ type: 'point' }}
       yScale={{
         type: 'linear',

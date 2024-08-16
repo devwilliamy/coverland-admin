@@ -33,7 +33,23 @@ export const getOrdersSummaryLast30Days = async () => {
 
     return data;
   } catch (error) {
-    handleError(error, `fetch order summary for the last 7 days`);
+    handleError(error, `fetch order summary for the last 30 days`);
+  }
+};
+
+export const getOrdersSummaryLastDay = async () => {
+  try {
+    const { data, error } = await supabase.rpc('get_orders_summary_last_day');
+
+    if (error) {
+      throw new Error(
+        `Error fetching order summary for the last day from RPC: ${error.message}`
+      );
+    }
+
+    return data;
+  } catch (error) {
+    handleError(error, 'fetch order summary for the last day');
   }
 };
 
