@@ -88,3 +88,12 @@ export const getHourlyOrdersSummary = async () => {
 };
 
 // You can add more order-related queries here
+
+export const getDailyOrderTotals = async (daysAgo = 30) => {
+  const { data, error } = await supabase.rpc('get_daily_order_totals', {
+    days_ago: daysAgo,
+  });
+
+  if (error) console.error('Error:', error);
+  else return data;
+};

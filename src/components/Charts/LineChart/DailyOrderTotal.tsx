@@ -1,41 +1,28 @@
 'use client';
 import { ResponsiveLine } from '@nivo/line';
 
-const transformDataForChart = (data) => {
-  const hours = Array.from(
-    { length: 24 },
-    (_, i) => `${String(i).padStart(2, '0')}:00`
-  );
+const transformDataForChart = (data) => [
+  {
+    id: 'Orders',
+    data: data.map((d) => ({
+      x: formatDate(d.order_date),
+      y: d.daily_total_amount,
+    })),
+  },
+];
 
-  // Group data by day
-  const groupedByDay = data.reduce((acc, current) => {
-    const day = current.hour.split('T')[0]; // Extract date part as the 'day'
-    const hour = current.hour.split('T')[1].substring(0, 5); // Extract time (hour and minute) part
+// Helper function to format the date
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${month}-${day}`;
+}
 
-    if (!acc[day]) {
-      acc[day] = { id: day, data: [] };
-    }
-
-    acc[day].data.push({ x: hour, y: current.total_completed_orders_count });
-
-    return acc;
-  }, {});
-
-  // Ensure all hours are present for each day, filling in missing hours with 0
-  Object.keys(groupedByDay).forEach((day) => {
-    const filledData = hours.map((hour) => {
-      const hourData = groupedByDay[day].data.find((d) => d.x === hour);
-      return hourData || { x: hour, y: 0 };
-    });
-    groupedByDay[day].data = filledData;
-  });
-
-  return Object.values(groupedByDay);
-};
-
-const DailyHourlyLineChart = ({ data }) => {
+const DailyOrderTotal = ({ data }) => {
   // Transform the data for Nivo
   const transformedData = transformDataForChart(data);
+  debugger;
   return (
     <ResponsiveLine
       data={transformedData}
@@ -103,4 +90,4 @@ const DailyHourlyLineChart = ({ data }) => {
   );
 };
 
-export default DailyHourlyLineChart;
+export default DailyOrderTotal;
